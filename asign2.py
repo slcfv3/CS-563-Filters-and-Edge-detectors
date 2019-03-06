@@ -51,9 +51,21 @@ def prewitt(input):
 
 
 def main():
-    res = cv2.imread('MRI.pgm',0)
+    
+    print ('Welcome! Please choose from the following images(Enter number):1, Building.pgm 2, MRI.pgm 3, peppers.pgm')
+    imgnum=input()
    
+    if imgnum=='1':
+            res = cv2.imread('Building.pgm',0)
+
+    if imgnum=='2':
+            res = cv2.imread('MRI.pgm',0)
+
+    if imgnum=='3':
+            res = cv2.imread('peppers.pgm',0)
+    
     while 1:
+        
         print ('Please choose from the following techniques(Enter number): 1, Histogram Stretch 2, Power Law Transform 3, Log Transform 4, Average Mask 5, Gassian Mask 6, Median Mask 7, Sobel Detector 8, Prewitt Detector 9, Stop' )
         choice= input()
 
