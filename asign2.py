@@ -27,7 +27,7 @@ def gaussian(input):
     return img_gaussian
 
 def median(input):
-    img_median=cv2.medianBlur(input,5)
+    img_median=cv2.medianBlur(input,3)
     return img_median
 
 def sobel(input):
