@@ -3,33 +3,39 @@ import numpy as np
 
 
 
-
-def histogram_stretch(input):
+#histogram stretch function
+def histogram_stretch(input):       
     img_equ = cv2.equalizeHist(input)
     return img_equ
 
+#power law transformation function
 def power_law(input):
     im = input/255.0
     img_power = cv2.pow(im,1.5)
     return img_power
 
+#log transformation function
 def log_trans(input):
     img_log = (np.log(input+1)/(np.log(1+np.max(input))))*255
     img_log = np.array(img_log,dtype=np.uint8)
     return img_log
 
+#average mask function
 def average(input):
     img_average =  cv2.blur(input,(5,5))
     return img_average
 
+#gaussian mask function
 def gaussian(input):
     img_gaussian = cv2.GaussianBlur(input,(5,5),0)
     return img_gaussian
 
+#median mask function
 def median(input):
     img_median=cv2.medianBlur(input,3)
     return img_median
 
+#sobel edge detector
 def sobel(input):
     sobelx = cv2.Sobel(input,cv2.CV_8U,1,0)  
     sobely = cv2.Sobel(input,cv2.CV_8U,0,1)
@@ -38,6 +44,7 @@ def sobel(input):
     img_sobel = cv2.bitwise_or(edgeX, edgeY)
     return img_sobel
 
+#prewitt edge detector
 def prewitt(input):
     kernelx = np.array([[1,1,1],[0,0,0],[-1,-1,-1]])
     kernely = np.array([[-1,0,1],[-1,0,1],[-1,0,1]])
@@ -49,9 +56,9 @@ def prewitt(input):
     return img_prewitt
 
 
-
+#main function
 def main():
-    
+    #Choose the image
     print ('Welcome! Please choose from the following images(Enter number):1, Building.pgm 2, MRI.pgm 3, peppers.pgm')
     imgnum=input()
    
@@ -63,7 +70,8 @@ def main():
 
     if imgnum=='3':
             res = cv2.imread('peppers.pgm',0)
-    
+            
+    #Choose the techniques
     while 1:
         
         print ('Please choose from the following techniques(Enter number): 1, Histogram Stretch 2, Power Law Transform 3, Log Transform 4, Average Mask 5, Gassian Mask 6, Median Mask 7, Sobel Detector 8, Prewitt Detector 9, Stop' )
