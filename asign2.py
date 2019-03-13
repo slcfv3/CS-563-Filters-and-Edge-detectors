@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+# Group member: Jérémie Perrault; Ziyi Wang; Xin Wang
 
 
 
@@ -70,7 +71,7 @@ def main():
 
     if imgnum=='3':
             res = cv2.imread('peppers.pgm',0)
-            
+
     #Choose the techniques
     while 1:
         
